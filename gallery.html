@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonsoonCat2.0 Gallery</title>
+    <style>
+        body {
+            font-family: 'Share Tech Mono', 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(90deg, #ff0080 0%, #7928ca 100%);
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 32px 0 #ff0080aa;
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            font-family: 'Share Tech Mono', 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            text-shadow: 0 0 18px #ff0080, 0 0 2px #fff;
+        }
+        .gallery-container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            background: rgba(36, 36, 62, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 8px 40px rgba(255,0,128,0.18);
+            padding: 2.5rem 2rem;
+            border: 2.5px solid #ff0080;
+            backdrop-filter: blur(10px);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            background: #222c;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px #ff008044;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            box-shadow: 0 0 12px #ff0080aa;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 1.5rem 0 0 0;
+            color: #fff;
+            background: #ff0080;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 0 8px #ff0080aa;
+            transition: background 0.2s, color 0.2s;
+        }
+        .back-link:hover {
+            background: #fff;
+            color: #ff0080;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MonsoonCat2.0 Gallery</h1>
+    </header>
+    <div class="gallery-container">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <!-- Add your images below -->
+            <div class="gallery-item">
+                <img src="f7425ff8-0ade-4a0c-a7d1-c24aedb05a8d.png" alt="monsooncat2.0 - angel">
+                <div>monsooncat2.0 - angel</div>
+            </div>
+            <div class="gallery-item" style="justify-content:center;min-height:220px;">
+                <div style="font-size:1.3rem;color:#ff0080;font-family:'Orbitron','Share Tech Mono',monospace;text-align:center;margin-top:3.5rem;">Coming Soon</div>
+            </div>
+            <div class="gallery-item" style="justify-content:center;min-height:220px;">
+                <div style="font-size:1.3rem;color:#ff0080;font-family:'Orbitron','Share Tech Mono',monospace;text-align:center;margin-top:3.5rem;">Coming Soon</div>
+            </div>
+        </div>
+        <a href="page.html" class="back-link">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
