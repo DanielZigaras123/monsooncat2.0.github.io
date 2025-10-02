@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonsoonCat2.0 - Official Business Website</title>
+    <style>
+        /* Mascot shake animation */
+        .mascot.shake {
+            animation: shake-mascot 0.4s cubic-bezier(.36,.07,.19,.97) both, float-mascot 3s ease-in-out infinite;
+        }
+        /* Subtle fade-in animation for sections */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.1s cubic-bezier(.23,1.02,.32,1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .btn-animate, .social-btns a, .header-socials a {
+            transition: transform 0.18s cubic-bezier(.23,1.02,.32,1), box-shadow 0.18s;
+        }
+        .btn-animate:hover, .social-btns a:hover, .header-socials a:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 4px 24px #ff008099, 0 0 8px #00ffe7a0;
+        }
+        a.underline-animate {
+            position: relative;
+            overflow: hidden;
+        }
+        a.underline-animate::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg,#ff0080,#00ffe7);
+            transform: scaleX(0);
+            transition: transform 0.25s cubic-bezier(.23,1.02,.32,1);
+        }
+        a.underline-animate:hover::after {
+            transform: scaleX(1);
+        }
+        @keyframes shake-mascot {
+            10%, 90% { transform: translateY(0) translateX(-2px) rotate(-2deg); }
+            20%, 80% { transform: translateY(-8px) translateX(2px) rotate(2deg); }
+            30%, 50%, 70% { transform: translateY(0) translateX(-4px) rotate(-2deg); }
+            40%, 60% { transform: translateY(-8px) translateX(4px) rotate(2deg); }
+        }
+        .mascot-label {
+            color: #fff;
+            font-family: 'Orbitron','Share Tech Mono',monospace;
+            font-size: 1.5rem;
+            margin-top: 4.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 8px #ff0080cc,
+                0 0 16px #ff0080cc,
+                2px 2px 0 #000,
+                -2px -2px 0 #000;
+            -webkit-text-stroke: 2px #ff0080;
+            animation: float-mascot 3s ease-in-out infinite;
+        }
+        .mascot {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            animation: float-mascot 3s ease-in-out infinite;
+            cursor: pointer;
+            filter: drop-shadow(0 0 12px #ff0080cc);
+        }
+        @keyframes float-mascot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px) scale(1.05); }
+        }
+        @keyframes neon-border {
+            0% {
+                box-shadow: 0 0 24px 4px #ff0080, 0 0 48px 8px #00ffe7, 0 0 0 #fff0;
+                border-color: #ff0080;
+            }
+            50% {
+                box-shadow: 0 0 48px 8px #00ffe7, 0 0 24px 4px #ff0080, 0 0 0 #fff0;
+                border-color: #00ffe7;
+            }
+            100% {
+                box-shadow: 0 0 24px 4px #ff0080, 0 0 48px 8px #00ffe7, 0 0 0 #fff0;
+                border-color: #ff0080;
+            }
+        }
+        .container {
+            animation: neon-border 3s linear infinite;
+            background: rgba(36, 36, 62, 0.85);
+            border: 2.5px solid #ff0080;
+            transition: background 0.4s, border 0.4s;
+        }
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            transition: background 0.4s, color 0.4s;
+        }
+        .header-socials a {
+            background: #23263a;
+            border: 2px solid #00ffe7;
+            box-shadow: 0 0 8px #00ffe740;
+        }
+        .header-socials a:hover {
+            background: #00ffe7;
+            border: 2px solid #ff00c8;
+            box-shadow: 0 0 16px #ff00c8a0;
+        }
+        .header-socials svg {
+            fill: #00ffe7;
+        }
+        .header-socials a:hover svg {
+            fill: #ff00c8;
+        }
+        header {
+            background: linear-gradient(90deg, #ff0080 0%, #7928ca 100%);
+            color: #fff !important;
+            padding: 2.5rem 1rem 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 32px 0 #ff0080aa;
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            position: relative;
+        }
+        h1, h2, h3, .header-socials, .header-socials a, .header-socials svg {
+            color: #fff !important;
+            fill: #fff !important;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.7rem;
+            letter-spacing: 2px;
+            font-family: 'Share Tech Mono', 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            color: #fff !important;
+            text-shadow: 0 0 18px #ff0080, 0 0 2px #fff;
+        }
+        h2 {
+            color: #fff !important;
+        }
+        h3 {
+            color: #fff !important;
+        }
+        .container {
+            max-width: 950px;
+            margin: 2.5rem auto;
+            background: var(--bg-container);
+            border: 2.5px solid var(--border-main);
+            border-radius: 18px;
+            box-shadow: 0 8px 40px rgba(255,0,128,0.18);
+            padding: 2.5rem 2rem;
+            transition: background 0.4s, border 0.4s;
+        }
+        section {
+            margin-bottom: 2.5rem;
+        }
+        h2 {
+            color: #fff;
+            font-family: 'Share Tech Mono', 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 8px #7928ca99;
+        }
+        h3 {
+            color: #fff;
+            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 1px;
+            margin-bottom: 0.7rem;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #ff0080;
+            text-shadow: 0 0 8px #ff008099;
+        }
+        .social-btns a {
+            display: inline-block;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            background: var(--bg-container);
+            border: 1.5px solid #fff;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 0 8px #fff4;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .social-btns a:hover {
+            background: #fff;
+            color: #ff0080;
+            border: 1.5px solid #ff0080;
+            box-shadow: 0 0 16px #ff008099;
+        }
+        .music-player audio {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .header-socials {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            display: flex;
+            gap: 18px;
+            z-index: 10;
+        }
+        .header-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--social-bg);
+            border: 2px solid var(--social-border);
+            box-shadow: 0 0 8px var(--social-border)40;
+            transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+        }
+        .header-socials a:hover {
+            background: var(--social-hover-bg);
+            border: 2px solid var(--social-hover-border);
+            box-shadow: 0 0 16px var(--social-hover-border)a0;
+        }
+        .header-socials svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--social-fill);
+            transition: fill 0.2s;
+        }
+        .header-socials a:hover svg {
+            fill: var(--social-hover-fill);
+        }
+        footer {
+            text-align: center;
+            padding: 1.2rem;
+            background: linear-gradient(90deg, #ff0080 0%, #7928ca 100%);
+            color: #fff;
+            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 1px;
+            border-top: 2px solid #ff0080;
+        }
+        /* Import Share Tech Mono and Orbitron font for cyberpunk gaming style */
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@600;800&display=swap');
+    </style>
+</head>
+<body>
+    <div style="text-align:center;padding-top:2.5rem;z-index:10;position:relative;">
+    <h1 style="font-size:2.7rem;font-family:'Orbitron','Share Tech Mono',monospace;color:#fff;text-shadow:0 0 18px #ff0080,0 0 2px #fff;letter-spacing:2px;margin-bottom:0.5rem;">MonsoonCat2.0</h1>
+    <div style="font-size:1.2rem;font-family:'Share Tech Mono','Orbitron',monospace;color:#fff;max-width:600px;margin:0 auto 1.5rem auto;text-shadow:0 0 8px #00ffe7a0;">JUST OPENED</div>
+    <div id="countdown-timer" style="margin:1.2rem auto 0 auto;display:inline-block;padding:0.7rem 2.2rem;background:rgba(36,36,62,0.92);border-radius:14px;box-shadow:0 0 18px #ff0080a0,0 0 8px #00ffe7a0;letter-spacing:2px;font-family:'Orbitron','Share Tech Mono',monospace;font-size:1.5rem;font-weight:bold;color:#00ffe7;border:2px solid #ff0080;text-shadow:0 0 8px #00ffe7a0,0 0 2px #fff;">
+        <span id="countdown-label">Something is coming!</span><br>
+        <span id="countdown"></span>
+    </div>
+    </div>
+    <div class="animated-bg"></div>
+    <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
+    <div class="header-socials" style="position:fixed;top:24px;right:40px;z-index:1001;">
+        <a href="https://x.com/monsooncat2025" target="_blank" title="Twitter" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22.46 5.924c-.793.352-1.646.59-2.542.698a4.48 4.48 0 0 0 1.965-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 16.11 4c-2.48 0-4.49 2.01-4.49 4.49 0 .352.04.695.116 1.022-3.73-.187-7.037-1.974-9.25-4.69a4.48 4.48 0 0 0-.607 2.26c0 1.56.795 2.936 2.006 3.744a4.47 4.47 0 0 1-2.034-.563v.057c0 2.18 1.55 4.002 3.604 4.417-.377.103-.775.158-1.186.158-.29 0-.568-.028-.84-.08.57 1.776 2.22 3.07 4.18 3.105A8.98 8.98 0 0 1 2 19.54a12.7 12.7 0 0 0 6.88 2.017c8.26 0 12.78-6.84 12.78-12.77 0-.195-.004-.39-.013-.583a9.1 9.1 0 0 0 2.24-2.307z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@monsooncat2025" target="_blank" title="YouTube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.12C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.391.566A2.994 2.994 0 0 0 .502 6.186C0 8.36 0 12 0 12s0 3.64.502 5.814a2.994 2.994 0 0 0 2.107 2.12C4.772 20.5 12 20.5 12 20.5s7.228 0 9.391-.566a2.994 2.994 0 0 0 2.107-2.12C24 15.64 24 12 24 12s0-3.64-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@monsooncat2" target="_blank" title="TikTok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M21.6 8.2c-1.2 0-2.3-.4-3.2-1.1V15c0 2.8-2.3 5-5 5s-5-2.2-5-5 2.2-5 5-5c.2 0 .4 0 .6.1v2.1c-.2 0-.4-.1-.6-.1-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9V3.5h2.1c.2 1.2 1.1 2.2 2.3 2.5v2.2z"/></svg>
+        </a>
+    </div>
+    <header style="position:relative;">
+    </header>
+    <div class="container">
+        <section id="about">
+            <h2 class="fade-in">Our Updates</h2>
+            <div style="margin-top:1.5rem;">
+                <h3>monsooncat2.0 - RAGE IS OUT NOW!</h3>
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;">
+                    <iframe src="https://www.youtube.com/embed/EjKMhW0duIs" title="monsooncat2.0 - RAGE IS OUT NOW!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:2.5rem;">
+                <a href="gallery.html" class="btn-animate underline-animate" style="display:inline-block;padding:1rem 2.2rem;font-size:1.2rem;font-family:'Orbitron','Share Tech Mono',monospace;font-weight:bold;color:#fff;background:#ff0080;border-radius:12px;text-decoration:none;box-shadow:0 0 12px #ff0080a0;letter-spacing:2px;">Gallery</a>
+            </div>
+        </section>
+        <section id="contact">
+            <h2 class="fade-in">Contact & Socials</h2>
+            <p>Email: <a href="mailto:monsooncat2.0@outlook.com">monsooncat2.0@outlook.com</a></p>
+            <div class="social-btns" style="margin-top:1.2rem;">
+                <a href="https://x.com/monsooncat2025" target="_blank" class="btn-animate underline-animate">Twitter</a>
+                <a href="https://www.youtube.com/@monsooncat2025" target="_blank" class="btn-animate underline-animate">YouTube</a>
+                <a href="https://www.tiktok.com/@monsooncat2" target="_blank" class="btn-animate underline-animate">TikTok</a>
+            </div>
+        </section>
+    </div>
+    <script>
+    // Fade-in animation for sections on load
+    window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fade-in').forEach(function(el, idx) {
+            el.style.animationDelay = (0.2 + idx * 0.15) + 's';
+        });
+    });
+    // Typewriter effect for the main heading
+    const headingText = "MonsoonCat2.0";
+    const headingElem = document.getElementById('typewriter-heading');
+    let i = 0;
+    function typeWriter() {
+        if (i <= headingText.length) {
+            headingElem.textContent = headingText.slice(0, i);
+            i++;
+            setTimeout(typeWriter, 120);
+        }
+    }
+    typeWriter();
+    // Confetti burst animation surprise
+    const confettiColors = ["#ff0080", "#00ffe7", "#fff", "#7928ca", "#fffb00"];
+    function randomBetween(a, b) { return a + Math.random() * (b - a); }
+    function confettiBurst(x, y) {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let confetti = [];
+        for (let i = 0; i < 60; i++) {
+            confetti.push({
+                x: x,
+                y: y,
+                r: randomBetween(4, 8),
+                color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+                vx: randomBetween(-6, 6),
+                vy: randomBetween(-12, -6),
+                ay: 0.35 + Math.random()*0.1,
+                rot: Math.random()*2*Math.PI,
+                vr: randomBetween(-0.1, 0.1)
+            });
+        }
+        let frame = 0;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach(c => {
+                ctx.save();
+                ctx.translate(c.x, c.y);
+                ctx.rotate(c.rot);
+                ctx.fillStyle = c.color;
+                ctx.fillRect(-c.r/2, -c.r/2, c.r, c.r);
+                ctx.restore();
+                c.x += c.vx;
+                c.y += c.vy;
+                c.vy += c.ay;
+                c.rot += c.vr;
+            });
+            frame++;
+            if (frame < 60) requestAnimationFrame(draw);
+            else ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        draw();
+    }
+    document.body.addEventListener('click', function(e) {
+        confettiBurst(e.clientX, e.clientY);
+    });
+    // Countdown timer for 23 hours and 3 minutes from page load
+    (function() {
+        var start = new Date();
+        var target = new Date(start.getTime() + (23 * 60 + 3) * 60 * 1000);
+        var countdownElem = document.getElementById('countdown');
+        var labelElem = document.getElementById('countdown-label');
+        function updateCountdown() {
+            var now = new Date();
+            var diff = target - now;
+            if (diff <= 0) {
+                countdownElem.textContent = 'IT\'S OUT NOW!';
+                labelElem.textContent = '';
+                countdownElem.style.color = '#ff0080';
+                return;
+            }
+            var hours = Math.floor(diff / (1000 * 60 * 60));
+            var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            var secs = Math.floor((diff % (1000 * 60)) / 1000);
+            countdownElem.textContent = `${hours.toString().padStart(2,'0')}:${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    })();
+    </script>
+</body>
+</html>
